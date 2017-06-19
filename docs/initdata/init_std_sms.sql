@@ -15,7 +15,6 @@ INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES (
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CCSW000007', 'HHXX', 'hhxx_password_2', 'ahh8070', 'password');
 INSERT INTO `tstd_system_channel` (`system_code`,`channel_type`,`push_type`,`status`,`push_system`,`private_key1`,`private_key2`,`private_key3`,`remark`) VALUES ('CD-CCSW000008','1','12','1','','162','hh8070','ahh8070','城市网');
 
-
 INSERT INTO `tjc_company` VALUES ('CD-CGD000006', '管道', '个金所');
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`)  VALUES ('CD-CGD000006', 'CSMD', 'csmd_sn', 'SDK-JDH-010-00046', 'account');
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`)  VALUES ('CD-CGD000006', 'CSMD', 'csmd_password', 'df9f0e__', 'password');
@@ -76,6 +75,10 @@ DELETE from tjc_configure where company_code = 'CD-CZH000001'
 INSERT INTO `tjc_company` (`code`,`name`,`prefix`) VALUES ('CD-CZH000001','正汇科技','正汇科技');
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CZH000001','Z253','z253_account','N1315527','z253_account');
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CZH000001','Z253','z253_password','Ps7f18ea','z253_password');
+
+INSERT INTO `tjc_company` VALUES ('CD-CJJ000010', '聚焦电商', '聚焦');
+INSERT INTO `tjc_configure` (`company_code`, `channel`, `k`, `v`, `remark`) values('CD-CJJ000010','CSMD','csmd_sn','SDK-JDH-010-00046','account');
+INSERT INTO `tjc_configure` (`company_code`, `channel`, `k`, `v`, `remark`) values('CD-CJJ000010','CSMD','csmd_password','df9f0e__','password');
 
 /*
 -- Query: SELECT * FROM push_std_sms.tstd_system_channel
