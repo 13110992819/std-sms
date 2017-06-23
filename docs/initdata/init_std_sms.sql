@@ -66,19 +66,17 @@ INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES (
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('QLQQ1006','SYKJ','sykj_account','001107','sykj_account');
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('QLQQ1006','SYKJ','sykj_password','a7zyPAN3','sykj_password');
 
-INSERT INTO `tjc_company` (`code`,`name`,`prefix`) VALUES ('ZHP1007','正汇科技','正汇科技');
-INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('ZHP1007','Z253','z253_account','N1315527','z253_account');
-INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('ZHP1007','Z253','z253_password','Ps7f18ea','z253_password');
-
-DELETE from tjc_company where code = 'CD-CZH000001';
-DELETE from tjc_configure where company_code = 'CD-CZH000001'
 INSERT INTO `tjc_company` (`code`,`name`,`prefix`) VALUES ('CD-CZH000001','正汇科技','正汇科技');
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CZH000001','Z253','z253_account','N1315527','z253_account');
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CZH000001','Z253','z253_password','Ps7f18ea','z253_password');
 
-INSERT INTO `tjc_company` VALUES ('CD-CJJ000010', '聚焦电商', '聚焦');
-INSERT INTO `tjc_configure` (`company_code`, `channel`, `k`, `v`, `remark`) values('CD-CJJ000010','CSMD','csmd_sn','SDK-JDH-010-00046','account');
-INSERT INTO `tjc_configure` (`company_code`, `channel`, `k`, `v`, `remark`) values('CD-CJJ000010','CSMD','csmd_password','df9f0e__','password');
+INSERT INTO `tjc_company` VALUES ('CD-CJJ000010', '聚焦电商', '聚焦电商');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CJJ000010', 'HHXX', 'hhxx_userid_1', '185', 'userid');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CJJ000010', 'HHXX', 'hhxx_account_1', 'hh8092', 'account');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CJJ000010', 'HHXX', 'hhxx_password_1', 'abc12345', 'password');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CJJ000010', 'HHXX', 'hhxx_userid_2', '185', 'userid');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CJJ000010', 'HHXX', 'hhxx_account_2', 'hh8092', 'account');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CJJ000010', 'HHXX', 'hhxx_password_2', 'abc12345', 'password');
 
 /*
 -- Query: SELECT * FROM push_std_sms.tstd_system_channel
