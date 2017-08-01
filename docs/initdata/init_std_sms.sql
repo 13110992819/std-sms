@@ -70,6 +70,12 @@ INSERT INTO `tjc_company` (`code`,`name`,`prefix`) VALUES ('CD-CZH000001','正�
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CZH000001','Z253','z253_account','N1315527','z253_account');
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CZH000001','Z253','z253_password','Ps7f18ea','z253_password');
 
+
+INSERT INTO `tjc_company` (`code`,`name`,`prefix`) VALUES ('CD-ZWZJ000012','自玩自健','自玩自健');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-ZWZJ000012','Z253','z253_account','N351326_N3016540','z253_account');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-ZWZJ000012','Z253','z253_password','L0l8vZYgHx2c7e','z253_password');
+
+
 INSERT INTO `tjc_company` VALUES ('CD-CJJ000010', '聚焦电商', '聚焦电商');
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CJJ000010', 'HHXX', 'hhxx_userid_1', '185', 'userid');
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CJJ000010', 'HHXX', 'hhxx_account_1', 'hh8092', 'account');

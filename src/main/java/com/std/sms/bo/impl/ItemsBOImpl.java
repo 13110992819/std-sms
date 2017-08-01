@@ -74,7 +74,7 @@ public class ItemsBOImpl extends PaginableBOImpl<Items> implements IItemsBO {
             condition.setCode(code);
             data = itemsDAO.select(condition);
             if (data == null) {
-                throw new BizException("xn0000", "�� ��Ų�����");
+                throw new BizException("xn0000", "记录不存在");
             }
         }
         return data;
