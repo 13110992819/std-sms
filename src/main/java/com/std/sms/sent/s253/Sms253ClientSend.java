@@ -2,6 +2,7 @@ package com.std.sms.sent.s253;
 
 import java.net.URLEncoder;
 
+import com.google.gson.JsonObject;
 import com.std.sms.common.SmsClientAccessTool;
 
 /**
@@ -23,22 +24,13 @@ public class Sms253ClientSend {
      * @param content：必填--实际发送内容，
      * @return 返回发送信息之后返回字符串
      */
-    public static String sendSms(String url, String account, String password,
-            String mobile, String content) {
-        return sendSms(url, account, password, mobile, content, "true", "POST",
-            "UTF-8", "UTF-8");
-    }
-
-    private static String sendSms(String url, String account, String pswd,
-            String mobile, String msg, String needstatus, String sendType,
-            String codingType, String backEncodType) {
+    public static String sendSms(String url, String account, String pswd,
+            String mobile, String msg) {
+        String needstatus = "true";
+        String sendType = "POST";
+        String codingType = "UTF-8";
+        String backEncodType = "UTF-8";
         try {
-            if (codingType == null || codingType.equals("")) {
-                codingType = "UTF-8";
-            }
-            if (backEncodType == null || backEncodType.equals("")) {
-                backEncodType = "UTF-8";
-            }
             StringBuffer send = new StringBuffer();
             send.append("&account=").append(
                 URLEncoder.encode(account, codingType));
@@ -60,9 +52,26 @@ public class Sms253ClientSend {
         }
     }
 
-    // public static void main(String[] args) {
-    // String sendUrl = "http://222.73.117.169/msg/HttpBatchSendSM";
-    // System.out.println(Sms253ClientSend.sendSms(sendUrl, "N1315527",
-    // "Ps7f18eab", "***", "【正汇科技】测试短信"));
-    // }
+    public static String sendChildSms(String url, String account, String pswd,
+            String mobile, String msg) {
+        String codingType = "UTF-8";
+        String backEncodType = "UTF-8";
+        try {
+            JsonObject smsParams = new JsonObject();
+            smsParams.addProperty("account",
+                URLEncoder.encode(account, codingType));
+            smsParams.addProperty("password",
+                URLEncoder.encode(pswd, codingType));
+            smsParams.addProperty("phone",
+                URLEncoder.encode(mobile, codingType));
+            smsParams.addProperty("msg", URLEncoder.encode(msg, codingType));
+            smsParams.addProperty("report", "true");
+            String sendSms = smsParams.toString();
+            return SmsClientAccessTool.getInstance().doAccessHTTPPostJson(url,
+                sendSms, backEncodType);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "未发送，编码异常";
+        }
+    }
 }

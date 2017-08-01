@@ -72,8 +72,8 @@ INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES (
 
 
 INSERT INTO `tjc_company` (`code`,`name`,`prefix`) VALUES ('CD-ZWZJ000012','自玩自健','自玩自健');
-INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-ZWZJ000012','Z253','z253_account','N351326_N3016540','z253_account');
-INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-ZWZJ000012','Z253','z253_password','L0l8vZYgHx2c7e','z253_password');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-ZWZJ000012','Z253C','z253_child_account','N351326_N3016540','z253_child_account');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-ZWZJ000012','Z253C','z253_child_password','L0l8vZYgHx2c7e','z253_child_password');
 
 
 INSERT INTO `tjc_company` VALUES ('CD-CJJ000010', '聚焦电商', '聚焦电商');

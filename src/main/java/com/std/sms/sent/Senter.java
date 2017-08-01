@@ -41,6 +41,8 @@ public class Senter {
             this.sendBySYKJ(companyCode, channel, content, mobileNumber);
         } else if (str[1].equalsIgnoreCase("Z253")) {
             this.sendBy253(companyCode, channel, content, mobileNumber);
+        } else if (str[1].equalsIgnoreCase("Z253C")) {
+            this.sendBy253Child(companyCode, channel, content, mobileNumber);
         } else {
             throw new BizException("xn709901", "短信配置信息，channel未定义");
         }
@@ -139,6 +141,32 @@ public class Senter {
         } catch (Exception e) {
             logger.error("253短信错误", e.getMessage());
             throw new BizException("xn709901", "253平台短信发送未知错误");
+        }
+    }
+
+    private void sendBy253Child(String companyCode, String channel,
+            String content, String mobileNumber) throws BizException {
+        String account = null;
+        String password = null;
+        String[] str = channel.split("-");
+        account = configureBO.doGetConfigure(companyCode, str[1],
+            "z253_child_account").getValue();
+        password = configureBO.doGetConfigure(companyCode, str[1],
+            "z253_child_password").getValue();
+        if (account == null || password == null) {
+            throw new BizException("xn709901", "短信发送失败，account或password未定义");
+        }
+        try {
+            String url = PropertiesUtil.Config.Z253_CHILD_URL;
+            String res = Sms253ClientSend.sendChildSms(url, account, password,
+                mobileNumber, content);
+            // res:{"time":"20170801133356","msgId":"17080113335623038","errorMsg":"","code":"0"}
+            if (!res.contains("\"code\":\"0\"")) {
+                throw new BizException("xn709901", "短信发送失败，错误代码：" + res);
+            }
+        } catch (Exception e) {
+            logger.error("253短信错误", e.getMessage());
+            throw new BizException("xn709901", "253平台子账户短信发送未知错误");
         }
     }
 

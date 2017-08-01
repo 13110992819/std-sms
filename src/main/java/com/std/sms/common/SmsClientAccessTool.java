@@ -96,6 +96,68 @@ public class SmsClientAccessTool {
         return receive.toString();
     }
 
+    
+    /**
+     * POSTJson访问方法
+     * @param sendUrl ：访问URL        
+     * @param paramStr ：参数串  
+     * @param backEncodType  ：返回的编码         
+     * @return
+     */
+    public String doAccessHTTPPostJson(String sendUrl, String sendParam,
+            String backEncodType) {
+        StringBuffer receive = new StringBuffer();
+        BufferedWriter wr = null;
+        try {
+            if (backEncodType == null || backEncodType.equals("")) {
+                backEncodType = "UTF-8";
+            }
+
+            URL url = new URL(sendUrl);
+            HttpURLConnection URLConn = (HttpURLConnection) url
+                .openConnection();
+
+            URLConn.setDoOutput(true);
+            URLConn.setDoInput(true);
+            ((HttpURLConnection) URLConn).setRequestMethod("POST");
+            URLConn.setUseCaches(false);
+            URLConn.setAllowUserInteraction(true);
+            HttpURLConnection.setFollowRedirects(true);
+            URLConn.setInstanceFollowRedirects(true);
+
+            URLConn.setRequestProperty("Content-Type",
+                "application/json;charset=UTF-8");
+            URLConn.setRequestProperty("Content-Length",
+                String.valueOf(sendParam.getBytes().length));
+
+            DataOutputStream dos = new DataOutputStream(
+                URLConn.getOutputStream());
+            dos.writeBytes(sendParam);
+
+            BufferedReader rd = new BufferedReader(new InputStreamReader(
+                URLConn.getInputStream(), backEncodType));
+            String line;
+            while ((line = rd.readLine()) != null) {
+                receive.append(line).append("\r\n");
+            }
+            rd.close();
+        } catch (java.io.IOException e) {
+            receive.append("访问产生了异常-->").append(e.getMessage());
+            e.printStackTrace();
+        } finally {
+            if (wr != null) {
+                try {
+                    wr.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                wr = null;
+            }
+        }
+
+        return receive.toString();
+    }
+    
     public String doAccessHTTPGet(String sendUrl, String backEncodType) {
 
         StringBuffer receive = new StringBuffer();

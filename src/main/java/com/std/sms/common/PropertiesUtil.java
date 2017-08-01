@@ -54,5 +54,8 @@ public class PropertiesUtil {
 
         public static String Z253_URL = props.getProperty("Z253_URL");
 
+        public static String Z253_CHILD_URL = props
+            .getProperty("Z253_CHILD_URL");
+
     }
 }
