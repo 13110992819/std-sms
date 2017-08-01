@@ -84,6 +84,14 @@ INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES (
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CJJ000010', 'HHXX', 'hhxx_account_2', 'hh8092', 'account');
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CJJ000010', 'HHXX', 'hhxx_password_2', 'abc12345', 'password');
 
+INSERT INTO `tjc_company` VALUES ('CD-JKEG000011', '金华金桥电子商务', '健康e购');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-JKEG000011', 'HHXX', 'hhxx_userid_1', '187', 'userid');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-JKEG000011', 'HHXX', 'hhxx_account_1', 'hh8094', 'account');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-JKEG000011', 'HHXX', 'hhxx_password_1', 'qq13857941635', 'password');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-JKEG000011', 'HHXX', 'hhxx_userid_2', '187', 'userid');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-JKEG000011', 'HHXX', 'hhxx_account_2', 'hh8094', 'account');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-JKEG000011', 'HHXX', 'hhxx_password_2', 'qq13857941635', 'password');
+
 /*
 -- Query: SELECT * FROM push_std_sms.tstd_system_channel
 LIMIT 0, 50000
