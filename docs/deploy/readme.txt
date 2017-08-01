@@ -12,9 +12,6 @@
   scp -P22 ./std-sms.war root@121.43.101.148:/home
   T6dh%$%$ss1
   
-  scp -P57652 ./std-sms.war root@120.26.222.73:/home
-  xnkj@151%
-  
 3，部署
   ssh root@121.43.101.148 -p 22
   
