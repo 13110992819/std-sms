@@ -30,6 +30,10 @@ INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`)  VALUES 
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`)  VALUES ('CD-CDZT000009', 'CSMD', 'csmd_password', 'df9f0e__', 'password');
 INSERT INTO `tstd_system_channel` (`system_code`,`channel_type`,`push_type`,`status`,`push_system`,`private_key1`,`private_key2`,`private_key3`,`remark`) VALUES ('CD-CYC000009','1','11','1','','SDK-JDH-010-00046','df9f0e__','','姚橙电商');
 
+INSERT INTO `tjc_company` VALUES ('CD-YLQ000014', '九州宝', '九州宝');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`)  VALUES ('CD-YLQ000014', 'CSMD', 'csmd_sn', 'SDK-JDH-010-00046', 'account');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`)  VALUES ('CD-YLQ000014', 'CSMD', 'csmd_password', 'df9f0e__', 'password');
+INSERT INTO `tstd_system_channel` (`system_code`,`channel_type`,`push_type`,`status`,`push_system`,`private_key1`,`private_key2`,`private_key3`,`remark`) VALUES ('CD-YLQ000014','1','11','1','','SDK-JDH-010-00046','df9f0e__','','九州宝');
 
 INSERT INTO `tjc_company` (`code`,`name`,`prefix`) VALUES ('CD-CLW000005','来来旺旺',NULL);
 INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`) VALUES ('CD-CLW000005','SYKJ','sykj_product','','sykj_product');
@@ -112,3 +116,9 @@ INSERT INTO `tstd_system_channel` (`system_code`,`channel_type`,`push_type`,`sta
 INSERT INTO `tstd_system_channel` (`system_code`,`channel_type`,`push_type`,`status`,`push_system`,`private_key1`,`private_key2`,`private_key3`,`remark`) VALUES ('1','4','41','1','','','','','');
 
 INSERT INTO `tstd_system_template` (`system_code`,`template_id`,`url`,`color1`,`color2`,`content`,`remark`) VALUES ('1','xotLTdJvA0JhXZH506v9TGPyDmQVK2eN1ZnJsvdo6mI','http://cswapp.hichengdai.com','#FF0000','#173177','',NULL);
+
+
+INSERT INTO `tjc_company` VALUES ('CD-CHY000015', '杭州任贝科技', '任贝科技');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`)  VALUES ('CD-CHY000015', 'CSMD', 'csmd_sn', 'SDK-JDH-010-00046', 'account');
+INSERT INTO `tjc_configure` (`company_code`,`channel`,`k`,`v`,`remark`)  VALUES ('CD-CHY000015', 'CSMD', 'csmd_password', 'df9f0e__', 'password');
+INSERT INTO `tstd_system_channel` (`system_code`,`channel_type`,`push_type`,`status`,`push_system`,`private_key1`,`private_key2`,`private_key3`,`remark`) VALUES ('CD-CHY000015','1','11','1','','SDK-JDH-010-00046','df9f0e__','','任贝科技');
