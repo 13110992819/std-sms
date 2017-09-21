@@ -421,11 +421,11 @@
 		<version>1.6.5</version>
 	</dependency>
 	<!-- yeepay -->
-	<dependency>
+	<!-- <dependency>
 		<groupId>com.yeepay</groupId>
 		<artifactId>fastpay-java</artifactId>
 		<version>0.0.1</version>
-	</dependency>
+	</dependency> -->
 	<!-- alibaba -->
 	<dependency>
 		<groupId>com.alibaba</groupId>
