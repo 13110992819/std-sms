@@ -1,11 +1,14 @@
 package com.std.sms.ao.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.std.sms.ao.ISmsReadAO;
 import com.std.sms.bo.ISmsBO;
 import com.std.sms.bo.ISmsReadBO;
+import com.std.sms.exception.BizException;
 
 @Service
 public class SmsReadAOImpl implements ISmsReadAO {
@@ -17,12 +20,14 @@ public class SmsReadAOImpl implements ISmsReadAO {
     private ISmsBO smsBO;
 
     @Override
-    public void addSmsRead(String userId, String smsId) {
-        Long count = smsReadBO.getTotalCount(userId, smsId);
-        if (count > 1) {
-            return;
+    public void addSmsRead(String userId, List<String> smsIdList) {
+        for (String smsId : smsIdList) {
+            Long count = smsReadBO.getTotalCount(userId, smsId);
+            if (count > 1) {
+                throw new BizException("xn0000", "编号" + smsId + "的公告您已查看过");
+            }
+            smsReadBO.saveSmsRead(userId, smsId);
         }
-        smsReadBO.saveSmsRead(userId, smsId);
     }
 
     @Override

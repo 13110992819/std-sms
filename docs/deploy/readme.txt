@@ -15,13 +15,13 @@
 3，部署
   ssh root@121.43.101.148 -p 22
   
-  cd /home/wwwroot/cdhome/tomcat_std_base/webapps
+  cd /mnt/www/common/tomcat_std_sms/webapps
   cp ./std-sms/WEB-INF/classes/application.properties .
   cp ./std-sms/WEB-INF/classes/config.properties .
   
   rm -rf std-sms.war
   rm -rf std-sms
-  mv /home/std-sms.war .
+  mv /mnt/std-sms.war .
   
   mv -f application.properties ./std-sms/WEB-INF/classes/
   mv -f config.properties ./std-sms/WEB-INF/classes/

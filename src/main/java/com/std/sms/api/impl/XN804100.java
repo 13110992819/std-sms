@@ -1,5 +1,7 @@
 package com.std.sms.api.impl;
 
+import org.apache.commons.collections.CollectionUtils;
+
 import com.std.sms.ao.ISmsReadAO;
 import com.std.sms.api.AProcessor;
 import com.std.sms.common.JsonUtil;
@@ -24,14 +26,17 @@ public class XN804100 extends AProcessor {
 
     @Override
     public Object doBusiness() throws BizException {
-        smsReadAO.addSmsRead(req.getUserId(), req.getSmsId());
+        smsReadAO.addSmsRead(req.getUserId(), req.getSmsIdList());
         return new BooleanRes(true);
     }
 
     @Override
     public void doCheck(String inputparams) throws ParaException {
         req = JsonUtil.json2Bean(inputparams, XN804100Req.class);
-        StringValidater.validateBlank(req.getUserId(), req.getSmsId());
+        StringValidater.validateBlank(req.getUserId());
+        if (CollectionUtils.isEmpty(req.getSmsIdList())) {
+            throw new BizException("xn0000", "公告编号不能为空");
+        }
     }
 
 }

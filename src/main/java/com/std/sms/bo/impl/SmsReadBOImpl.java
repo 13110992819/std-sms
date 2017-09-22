@@ -27,6 +27,8 @@ public class SmsReadBOImpl extends PaginableBOImpl<SmsRead> implements
             code = OrderNoGenerater
                 .generateM(EGeneratePrefix.SMSREAD.getCode());
             data.setCode(code);
+            data.setUserId(userId);
+            data.setSmsId(smsId);
             smsReadDAO.insert(data);
         }
         return code;

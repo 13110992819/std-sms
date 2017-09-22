@@ -1,5 +1,7 @@
 package com.std.sms.dto.req;
 
+import java.util.List;
+
 /**
  * 阅读公告
  * @author: asus 
@@ -11,7 +13,7 @@ public class XN804100Req {
     private String userId;
 
     // 公告编号
-    private String smsId;
+    private List<String> smsIdList;
 
     public String getUserId() {
         return userId;
@@ -21,12 +23,12 @@ public class XN804100Req {
         this.userId = userId;
     }
 
-    public String getSmsId() {
-        return smsId;
+    public List<String> getSmsIdList() {
+        return smsIdList;
     }
 
-    public void setSmsId(String smsId) {
-        this.smsId = smsId;
+    public void setSmsIdList(List<String> smsIdList) {
+        this.smsIdList = smsIdList;
     }
 
 }
