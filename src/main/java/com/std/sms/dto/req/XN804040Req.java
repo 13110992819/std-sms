@@ -36,6 +36,9 @@ public class XN804040Req extends APageReq {
     // 状态（0 未发送，1 已发送） (选填)
     private String status;
 
+    // 当前用户编号
+    private String userId;
+
     public String getSmsTitle() {
         return smsTitle;
     }
@@ -114,5 +117,13 @@ public class XN804040Req extends APageReq {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

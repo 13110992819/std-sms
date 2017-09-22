@@ -216,6 +216,13 @@ CREATE TABLE `tsys_dict` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `tstd_sms_read`;
+CREATE TABLE `tstd_sms_read` (
+  `code` varchar(32) DEFAULT NULL COMMENT '编号',
+  `user_id` varchar(32) DEFAULT NULL COMMENT '用户编号',
+  `sms_id` varchar(32) DEFAULT NULL COMMENT '公告编号',
+  PRIMARY KEY (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 SET FOREIGN_KEY_CHECKS = 1;

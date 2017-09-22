@@ -45,7 +45,7 @@ public class XN804040 extends AProcessor {
         condition.setOrder(column, req.getOrderDir());
         int start = Integer.valueOf(req.getStart());
         int limit = Integer.valueOf(req.getLimit());
-        return smsAO.querySmsPage(start, limit, condition);
+        return smsAO.querySmsPage(start, limit, condition, req.getUserId());
     }
 
     @Override

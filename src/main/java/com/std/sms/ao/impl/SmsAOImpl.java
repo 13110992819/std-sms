@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.std.sms.ao.ISmsAO;
 import com.std.sms.bo.IReceiverBO;
 import com.std.sms.bo.ISmsBO;
+import com.std.sms.bo.ISmsReadBO;
 import com.std.sms.bo.ISystemChannelBO;
 import com.std.sms.bo.ISystemTemplateBO;
 import com.std.sms.bo.ITemplateBO;
@@ -38,6 +39,9 @@ public class SmsAOImpl implements ISmsAO {
 
     @Autowired
     private ISmsBO smsBO;
+
+    @Autowired
+    private ISmsReadBO smsReadBO;
 
     @Autowired
     private ISystemChannelBO systemChannelBO;
@@ -260,6 +264,7 @@ public class SmsAOImpl implements ISmsAO {
         String status = ESmsStatus.SENT_YES.getCode();
         if (ESmsStatus.SENT_YES.getCode().equals(sms.getStatus())) {
             status = ESmsStatus.SENT_NO.getCode();
+            smsReadBO.removeSmeRead(id);
         }
         smsBO.refreshSmsStatus(id, status, updater);
     }
@@ -315,13 +320,34 @@ public class SmsAOImpl implements ISmsAO {
     }
 
     @Override
-    public Paginable<Sms> querySmsPage(int start, int limit, Sms condition) {
-        return smsBO.getPaginable(start, limit, condition);
+    public Paginable<Sms> querySmsPage(int start, int limit, Sms condition,
+            String userId) {
+        Paginable<Sms> page = smsBO.getPaginable(start, limit, condition);
+        List<Sms> list = page.getList();
+        for (Sms sms : list) {
+            this.toFullSms(sms, userId);
+        }
+        return page;
+    }
+
+    private void toFullSms(Sms sms, String userId) {
+        sms.setIsRead(EBoolean.NO.getCode());
+        if (StringUtils.isNotBlank(userId)) {
+            Long count = smsReadBO.getTotalCount(userId,
+                String.valueOf(sms.getId()));
+            if (count > 0) {
+                sms.setIsRead(EBoolean.YES.getCode());
+            }
+        }
     }
 
     @Override
-    public List<Sms> querySmsList(Sms condition) {
-        return smsBO.querySmsList(condition);
+    public List<Sms> querySmsList(Sms condition, String userId) {
+        List<Sms> list = smsBO.querySmsList(condition);
+        for (Sms sms : list) {
+            this.toFullSms(sms, userId);
+        }
+        return list;
     }
 
     @Override

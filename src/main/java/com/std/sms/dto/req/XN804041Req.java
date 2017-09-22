@@ -25,6 +25,9 @@ public class XN804041Req {
     // 状态（0 未发送，1 已发送） (选填)
     private String status;
 
+    // 当前用户编号
+    private String userId;
+
     public String getToKind() {
         return toKind;
     }
@@ -87,5 +90,13 @@ public class XN804041Req {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

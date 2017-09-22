@@ -93,9 +93,10 @@ public interface ISmsAO {
      */
     public void doSmsDaily();
 
-    public Paginable<Sms> querySmsPage(int start, int limit, Sms condition);
+    public Paginable<Sms> querySmsPage(int start, int limit, Sms condition,
+            String userId);
 
-    public List<Sms> querySmsList(Sms condition);
+    public List<Sms> querySmsList(Sms condition, String userId);
 
     public Sms getSms(Long id);
 }

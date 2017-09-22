@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.std.sms.dao.ISmsReadDAO">
+	<resultMap id="smsRead_DB_Result" type="smsRead">
+		<result column="code" property="code" />
+		<result column="sms_id" property="smsId" />
+		<result column="user_id" property="userId" />
+	</resultMap>
+	<sql id="where_condition">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="code != null and code != '' ">
+				AND t.code = #{code}
+			</if>
+			<if test="smsId != null and smsId != '' ">
+				AND t.sms_id = #{smsId}
+			</if>
+			<if test="userId != null and userId != '' ">
+				AND t.user_id = #{userId}
+			</if>
+		</trim>
+	</sql>
+	<select id="select_smsRead" parameterType="smsRead" resultMap="smsRead_DB_Result">
+		SELECT
+		t.code
+		,t.sms_id
+		,t.user_id
+		FROM
+		tstd_sms_read t
+		<include refid="where_condition" />
+		<trim prefix="ORDER BY ">
+			<if test="order != null and order != '' ">
+				t.${order}
+			</if>
+		</trim>
+	</select>
+
+	<select id="select_smsRead_count" parameterType="smsRead"
+		resultType="java.lang.Long">
+		SELECT count(1) FROM tstd_sms_read t
+		<include refid="where_condition" />
+	</select>
+
+	<insert id="insert_smsRead" parameterType="smsRead">
+		INSERT INTO
+		tstd_sms_read(
+		code
+		,sms_id
+		,user_id
+		)
+		VALUES(
+		#{code}
+		,#{smsId}
+		,#{userId}
+		)
+	</insert>
+
+	<delete id="delete_smsRead" parameterType="smsRead">
+		delete tstd_sms_read
+		where
+		sms_id = #{smsId}
+	</delete>
+</mapper>

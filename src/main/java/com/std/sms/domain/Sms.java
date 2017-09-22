@@ -82,6 +82,12 @@ public class Sms extends ABaseDO {
     // 模板编号
     private String templateId;
 
+    // 当前用户编号
+    private String userId;
+
+    // 是否已读（0，未读；1，已读）
+    private String isRead;
+
     public String getTemplateId() {
         return templateId;
     }
@@ -256,5 +262,21 @@ public class Sms extends ABaseDO {
 
     public void setJpushId(String jpushId) {
         this.jpushId = jpushId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(String isRead) {
+        this.isRead = isRead;
     }
 }

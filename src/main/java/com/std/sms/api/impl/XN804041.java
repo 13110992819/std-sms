@@ -31,7 +31,7 @@ public class XN804041 extends AProcessor {
         condition.setToMobile(req.getToMobile());
         condition.setSmsType(req.getSmsType());
         condition.setStatus(req.getStatus());
-        return smsAO.querySmsList(condition);
+        return smsAO.querySmsList(condition, req.getUserId());
     }
 
     @Override

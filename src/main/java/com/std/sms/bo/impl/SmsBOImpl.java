@@ -11,6 +11,8 @@ import com.std.sms.bo.ISmsBO;
 import com.std.sms.bo.base.PaginableBOImpl;
 import com.std.sms.dao.ISmsDAO;
 import com.std.sms.domain.Sms;
+import com.std.sms.enums.EChannelType;
+import com.std.sms.enums.EPushType;
 import com.std.sms.enums.ESmsStatus;
 import com.std.sms.enums.ESmsType;
 import com.std.sms.exception.BizException;
@@ -107,5 +109,17 @@ public class SmsBOImpl extends PaginableBOImpl<Sms> implements ISmsBO {
             }
         }
         return data;
+    }
+
+    @Override
+    public Long getTotalCount(String kind, String systemCode) {
+        Sms condition = new Sms();
+        condition.setChannelType(EChannelType.NOTICE.getCode());
+        condition.setPushType(EPushType.NOTICE.getCode());
+        condition.setStatus(ESmsStatus.SENT_YES.getCode());
+        condition.setToKind(kind);
+        condition.setToSystemCode(systemCode);
+        condition.setFromSystemCode(systemCode);
+        return smsDAO.selectTotalCount(condition);
     }
 }
