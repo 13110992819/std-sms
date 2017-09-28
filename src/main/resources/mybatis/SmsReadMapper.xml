@@ -56,7 +56,8 @@
 	</insert>
 
 	<delete id="delete_smsRead" parameterType="smsRead">
-		delete tstd_sms_read
+		delete from
+		tstd_sms_read
 		where
 		sms_id = #{smsId}
 	</delete>
