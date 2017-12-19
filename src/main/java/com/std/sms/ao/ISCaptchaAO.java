@@ -21,8 +21,11 @@ public interface ISCaptchaAO {
      * @create: 2017年2月13日 下午12:26:14 xieyj
      * @history:
      */
-    public String doSendBySystem(String systemCode, String companyCode,
+    public String doSendSMSBySystem(String systemCode, String companyCode,
             String mobile, String bizType);
+
+    public String doSendEmailBySystem(String systemCode, String companyCode,
+            String email, String bizType);
 
     /** 
      * 检查验证码是否正确

@@ -10,7 +10,6 @@ import com.std.sms.dto.res.BooleanRes;
 import com.std.sms.exception.BizException;
 import com.std.sms.exception.ParaException;
 import com.std.sms.spring.SpringContextHolder;
-import com.std.sms.util.PhoneUtil;
 
 /**
  * 指定系统验证码验证
@@ -38,9 +37,6 @@ public class XN804082 extends AProcessor {
         req = JsonUtil.json2Bean(inputparams, XN804082Req.class);
         if (StringUtils.isBlank(req.getSystemCode())) {
             throw new ParaException("xn804080", "系统编号不能为空");
-        }
-        if (!PhoneUtil.isMobile(req.getMobile())) {
-            throw new ParaException("xn804080", "手机号非法");
         }
     }
 }

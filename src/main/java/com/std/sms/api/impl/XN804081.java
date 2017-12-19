@@ -27,7 +27,7 @@ public class XN804081 extends AProcessor {
 
     @Override
     public Object doBusiness() throws BizException {
-        String code = sCaptchaAO.doSendBySystem(req.getSystemCode(),
+        String code = sCaptchaAO.doSendSMSBySystem(req.getSystemCode(),
             req.getCompanyCode(), req.getMobile(), req.getBizType());
         return new PKCodeRes(code);
     }

@@ -14,6 +14,7 @@ import com.std.sms.domain.Company;
 import com.std.sms.domain.SCaptcha;
 import com.std.sms.enums.ESmsStatus;
 import com.std.sms.exception.BizException;
+import com.std.sms.sent.EmailSenter;
 import com.std.sms.sent.Senter;
 import com.std.sms.sent.SystemCodeSenter;
 import com.std.sms.util.PhoneUtil;
@@ -35,6 +36,9 @@ public class SCaptchaAOImpl implements ISCaptchaAO {
     SystemCodeSenter systemCodeSenter;
 
     @Autowired
+    EmailSenter emailSenter;
+
+    @Autowired
     ISCaptchaBO sCaptchaBO;
 
     @Override
@@ -51,7 +55,7 @@ public class SCaptchaAOImpl implements ISCaptchaAO {
     }
 
     @Override
-    public String doSendBySystem(String systemCode, String companyCode,
+    public String doSendSMSBySystem(String systemCode, String companyCode,
             String mobile, String bizType) {
         String captcha = RandomUtil.generate4();
         String captchaContent = addContent(mobile, captcha);
@@ -60,6 +64,20 @@ public class SCaptchaAOImpl implements ISCaptchaAO {
             companyCode, systemCode);
         String channel = configureBO.getConfigureChannel(systemCode);
         systemCodeSenter.send(systemCode, "K", channel, mobile, content);
+        return code;
+    }
+
+    @Override
+    @Transactional
+    public String doSendEmailBySystem(String systemCode, String companyCode,
+            String email, String bizType) {
+        String captcha = RandomUtil.generate4();
+        String content = "尊敬的用户，您的验证码为" + captcha;
+        String code = sCaptchaBO.savaSCaptcha(email, captcha, bizType,
+            companyCode, systemCode);
+        String channel = configureBO.getConfigureChannel(systemCode + "_email");
+        emailSenter.send(companyCode, channel, email, captcha);
+
         return code;
     }
 
