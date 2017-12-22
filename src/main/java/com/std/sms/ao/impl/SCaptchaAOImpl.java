@@ -72,7 +72,6 @@ public class SCaptchaAOImpl implements ISCaptchaAO {
     public String doSendEmailBySystem(String systemCode, String companyCode,
             String email, String bizType) {
         String captcha = RandomUtil.generate4();
-        String content = "尊敬的用户，您的验证码为" + captcha;
         String code = sCaptchaBO.savaSCaptcha(email, captcha, bizType,
             companyCode, systemCode);
         String channel = configureBO.getConfigureChannel(systemCode + "_email");
