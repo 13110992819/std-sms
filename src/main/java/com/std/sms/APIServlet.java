@@ -43,6 +43,8 @@ public class APIServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
         writer.append("Version:1.2.0 \n");
         writer.append("Description: 新加统计接口\n");
+        writer.append("Version:1.3.0 \n");
+        writer.append("Description: add email\n");
         writer.flush();
     }
 

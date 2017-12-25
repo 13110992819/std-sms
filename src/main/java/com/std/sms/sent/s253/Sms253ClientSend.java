@@ -52,6 +52,29 @@ public class Sms253ClientSend {
         }
     }
 
+    public static String sendJsonSms(String url, String account, String pswd,
+            String mobile, String msg) {
+        String codingType = "UTF-8";
+        String backEncodType = "UTF-8";
+        try {
+            JsonObject smsParams = new JsonObject();
+            smsParams.addProperty("account",
+                URLEncoder.encode(account, codingType));
+            smsParams.addProperty("password",
+                URLEncoder.encode(pswd, codingType));
+            smsParams.addProperty("phone",
+                URLEncoder.encode(mobile, codingType));
+            smsParams.addProperty("msg", URLEncoder.encode(msg, codingType));
+            smsParams.addProperty("report", "true");
+            String sendSms = smsParams.toString();
+            return SmsClientAccessTool.getInstance().doAccessHTTPPostJson(url,
+                sendSms, backEncodType);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "未发送，编码异常";
+        }
+    }
+
     public static String sendChildSms(String url, String account, String pswd,
             String mobile, String msg) {
         String codingType = "UTF-8";
